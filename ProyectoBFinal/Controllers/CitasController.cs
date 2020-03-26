@@ -40,7 +40,7 @@ namespace ProyectoBFinal.Controllers
         public ActionResult Create()
         {
             ViewBag.Id_Medico = new SelectList(db.Medicos, "Id", "Nombre");
-            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Cedula");
+            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre");
             return View();
         }
 
@@ -76,7 +76,7 @@ namespace ProyectoBFinal.Controllers
                 return HttpNotFound();
             }
             ViewBag.Id_Medico = new SelectList(db.Medicos, "Id", "Nombre", citas.Id_Medico);
-            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Cedula", citas.Id_Paciente);
+            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre", citas.Id_Paciente);
             return View(citas);
         }
 
@@ -94,7 +94,7 @@ namespace ProyectoBFinal.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id_Medico = new SelectList(db.Medicos, "Id", "Nombre", citas.Id_Medico);
-            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Cedula", citas.Id_Paciente);
+            ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre", citas.Id_Paciente);
             return View(citas);
         }
 
