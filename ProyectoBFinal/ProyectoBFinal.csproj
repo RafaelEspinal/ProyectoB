@@ -127,6 +127,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AltasController.cs" />
+    <Compile Include="Controllers\CitasController.cs" />
+    <Compile Include="Controllers\HabitacionesController.cs" />
+    <Compile Include="Controllers\IngresosController.cs" />
     <Compile Include="Controllers\MedicosController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -185,6 +189,26 @@
     <Content Include="Views\Medicos\Details.cshtml" />
     <Content Include="Views\Medicos\Edit.cshtml" />
     <Content Include="Views\Medicos\Index.cshtml" />
+    <Content Include="Views\Habitaciones\Create.cshtml" />
+    <Content Include="Views\Habitaciones\Delete.cshtml" />
+    <Content Include="Views\Habitaciones\Details.cshtml" />
+    <Content Include="Views\Habitaciones\Edit.cshtml" />
+    <Content Include="Views\Habitaciones\Index.cshtml" />
+    <Content Include="Views\Citas\Create.cshtml" />
+    <Content Include="Views\Citas\Delete.cshtml" />
+    <Content Include="Views\Citas\Details.cshtml" />
+    <Content Include="Views\Citas\Edit.cshtml" />
+    <Content Include="Views\Citas\Index.cshtml" />
+    <Content Include="Views\Ingresos\Create.cshtml" />
+    <Content Include="Views\Ingresos\Delete.cshtml" />
+    <Content Include="Views\Ingresos\Details.cshtml" />
+    <Content Include="Views\Ingresos\Edit.cshtml" />
+    <Content Include="Views\Ingresos\Index.cshtml" />
+    <Content Include="Views\Altas\Create.cshtml" />
+    <Content Include="Views\Altas\Delete.cshtml" />
+    <Content Include="Views\Altas\Details.cshtml" />
+    <Content Include="Views\Altas\Edit.cshtml" />
+    <Content Include="Views\Altas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

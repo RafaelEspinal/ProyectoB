@@ -1,0 +1,66 @@
+﻿@model ProyectoBFinal.Models.Altas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Altas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingresos.Fecha_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingresos.Fecha_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_paciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_paciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
