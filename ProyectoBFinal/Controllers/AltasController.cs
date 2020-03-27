@@ -17,7 +17,7 @@ namespace ProyectoBFinal.Controllers
         // GET: Altas
         public ActionResult Index()
         {
-            var altas = db.Altas.Include(a => a.Ingresos);
+            var altas = db.Altas.Include(a => a.Ingresos).Include(a => a.Pacientes).Include(a => a.Habitaciones);
             return View(altas.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace ProyectoBFinal.Controllers
         // GET: Altas/Create
         public ActionResult Create()
         {
-            ViewBag.IngresoId = new SelectList(db.Ingresos, "Id", "Fecha_ingreso");
+            ViewBag.IngresoId = new SelectList(db.Ingresos, "Id", "Id");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace ProyectoBFinal.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IngresoId = new SelectList(db.Ingresos, "Id", "Fecha_ingreso", altas.IngresoId);
+            ViewBag.IngresoId = new SelectList(db.Ingresos, "Id", "Id", altas.IngresoId);
             return View(altas);
         }
 
@@ -127,6 +127,15 @@ namespace ProyectoBFinal.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [HttpPost]
+        public JsonResult Duplicador(int clavePaciente)
+        {
+            
+            var duplicado = (from p in db.Pacientes
+                             where p.Id == clavePaciente
+                            select p.Nombre).ToList();
+            return Json(duplicado);
         }
     }
 }

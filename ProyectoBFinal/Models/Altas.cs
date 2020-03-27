@@ -17,7 +17,9 @@ namespace ProyectoBFinal.Models
         public int IngresoId { get; set; }
         [ForeignKey("IngresoId")]
         public Ingresos Ingresos { get; set; }
+        public Pacientes Pacientes { get; set; }
+        public Habitaciones Habitaciones { get; set; }
 
-        
+
     }
 }
