@@ -83,7 +83,7 @@ C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\bin\es\System
 C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\bin\es\System.Web.WebPages.resources.dll
 C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\obj\Debug\ProyectoBFinal.csprojAssemblyReference.cache
 C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\obj\Debug\ProyectoBFinal.csproj.CopyComplete
 C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\obj\Debug\ProyectoBFinal.dll
 C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\obj\Debug\ProyectoBFinal.pdb
+C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\obj\Debug\ProyectoBFinal.csprojAssemblyReference.cache
