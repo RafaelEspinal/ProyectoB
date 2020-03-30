@@ -15,9 +15,36 @@ namespace ProyectoBFinal.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: Pacientes
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Pacientes.ToList());
+            Asegurados Si;
+            Asegurados No;
+            Si = (Asegurados)Enum.Parse(typeof(Asegurados), "0");
+            No = (Asegurados)Enum.Parse(typeof(Asegurados), "1");
+            var pacientes = from s in db.Pacientes
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if (searchString.Contains("Si"))
+                {
+                    pacientes = pacientes.Where(s => s.Nombre.Contains(searchString)
+                                            || s.Cedula.Contains(searchString)
+                                            || s.Asegurado == Si);
+                }
+                else if (searchString.Contains("No"))
+                {
+                    pacientes = pacientes.Where(s => s.Nombre.Contains(searchString)
+                                            || s.Cedula.Contains(searchString)
+                                            || s.Asegurado == No);
+                }
+                else
+                {
+                    pacientes = pacientes.Where(s => s.Nombre.Contains(searchString)
+                                            || s.Cedula.Contains(searchString));
+                }
+            }
+
+            return View(pacientes.ToList());
         }
 
         // GET: Pacientes/Details/5

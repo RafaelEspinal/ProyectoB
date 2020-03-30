@@ -4,15 +4,78 @@
 }
 <link href="~/Estilos/SideBar.css" rel="stylesheet" />
 
-<main>
-
-    <div id="vacio">
-        <h1>Casos y fechas del corona virus</h1>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img class="first-slide" src="https://www.healthline.com/hlcmsresource/images/imce/hospital-acquired-nosocomial-infections_thumb.jpg" alt="First slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Sistema Hospitalario</h1>
+                    <p>@Html.ActionLink("Agregar pacientes", "Create", "Pacientes", null ,new { @class="btn btn-lg btn-primary" })</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="second-slide" src="https://media-exp1.licdn.com/dms/image/C4E1BAQHuA0U0P_rTcA/company-background_10000/0?e=2159024400&v=beta&t=ogZ-N62JD_cWqIDiSE7bb01yqRBcTeTKPb3TvEz0l-8" alt="Second slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Sistema Hospitalario</h1>
+               
+                    <p>@Html.ActionLink("Agregar Habitacion", "Create", "Habitaciones", null, new { @class = "btn btn-lg btn-primary" })</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="third-slide" src="https://mejorconsalud.com/wp-content/uploads/2018/06/paciente-hospital-enfermo-e1543883565110.jpg?width=1200&enable=upscale" alt="Third slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Sistema Hospitalario</h1>
+                    <p>@Html.ActionLink("Agregar Doctores", "Create", "Medicos", null, new { @class = "btn btn-lg btn-primary" })</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="contenedor">
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div><!-- /.carousel -->
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
 
-        
-    </div>
+<div class="container marketing">
 
-</main>
-
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-4">
+            <img class="img-circle" src="https://elmedicointeractivo.com/wp-content/uploads/2017/07/2017071912314693181.jpg" alt="Generic placeholder image" width="140" height="140">
+            <h2>Citas Medicas</h2>
+            <p>Agregar citas medicas medicas a pacientes, que lo soliciten.</p>
+            <p>@Html.ActionLink("Agregar Citas", "Create", "Citas", null, new { @class = "btn btn-lg btn-default" })</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="img-circle" src="https://www.tribunasalamanca.com/uploads/imagenes/images/2019/4/4/5ca63015d86b9e7c5e000061/Habitaci%C3%B3n%20de%20hospital%20_detail.jpg?1554395155" alt="Generic placeholder image" width="140" height="140">
+            <h2>Ingresos de internos</h2>
+            <p>Agregar internamiento a pacientes con riesgos de saluda, para si estar bajo cuidado medico.</p>
+            <p>@Html.ActionLink("Agregar Ingresos", "Create", "Ingresos", null, new { @class = "btn btn-lg btn-default" })</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="img-circle" src="https://retos-directivos.eae.es/wp-content/uploads/2017/12/iStock-487575270-e1514408134705.jpg" alt="Generic placeholder image" width="140" height="140">
+            <h2>Altas medicas</h2>
+            <p>Dar altas medicas aquellos pacientes, bajo cuidados medicos, danto el monto a pagar.</p>
+            <p>@Html.ActionLink("Agregar Doctores", "Create", "Altas", null, new { @class = "btn btn-lg btn-default" })</p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+    <!-- START THE FEATURETTES -->
+</div>
