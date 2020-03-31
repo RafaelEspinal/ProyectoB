@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoBFinal.Models;
+using Rotativa;
 
 namespace ProyectoBFinal.Controllers
 {
@@ -20,21 +21,24 @@ namespace ProyectoBFinal.Controllers
             var altas = db.Altas.Include(a => a.Ingresos).Include(a => a.Pacientes).Include(a => a.Habitaciones);
             altas = from s in altas
                     select s;
+            
             if (!String.IsNullOrEmpty(searchString))
             {
 
                 altas = altas.Where(s => s.Pacientes.Nombre.Contains(searchString)
                                         || s.Fecha_ingreso.Contains(searchString)
                                         || s.Fecha_salida.Contains(searchString));
-                
 
             }
-            ViewBag.Sumatoria = altas.Sum(s => s.Monto);
-            ViewBag.Conteo = altas.Count();
-            ViewBag.Promedio = altas.Average(s => s.Monto);
-            ViewBag.Max = altas.Max(s => s.Monto);
-            ViewBag.Min = altas.Min(s => s.Monto);
+
+            
             return View(altas.ToList());
+        }
+
+        public ActionResult Imprimir()
+        {
+            var imprimir = new ActionAsPdf("Index");
+            return imprimir;
         }
 
         // GET: Altas/Details/5
@@ -144,56 +148,6 @@ namespace ProyectoBFinal.Controllers
             }
             base.Dispose(disposing);
         }
-        [HttpPost]
-        public JsonResult BuscadorNom(int clavePaciente)
-        {
-            
-            var duplicado = (from i in db.Ingresos
-                             join p in db.Pacientes
-                             on i.Id_Paciente equals p.Id
-                             where i.Id == clavePaciente
-                            select p.Nombre).ToList();
-            return Json(duplicado);
-        }
-
-        public JsonResult BuscadorMonto(int clavePaciente)
-        {
-
-            var duplicado = (from i in db.Ingresos
-                             join h in db.Habitaciones
-                             on i.Id_Habitacion equals h.Id
-                             where i.Id == clavePaciente
-                             select h.Precio_dia).ToList();
-            return Json(duplicado);
-        }
-        public JsonResult BuscadorFIn(int clavePaciente)
-        {
-
-            var duplicado = (from i in db.Ingresos
-                             where i.Id == clavePaciente
-                             select i.Fecha_ingreso).ToList();
-            return Json(duplicado);
-        }
-        public JsonResult BuscadorNHab(int clavePaciente)
-        {
-
-            var duplicado = (from i in db.Ingresos
-                             join h in db.Habitaciones
-                             on i.Id_Habitacion equals h.Id
-                             where i.Id == clavePaciente
-                             select h.Numero).ToList();
-            return Json(duplicado);
-        }
-        public JsonResult BuscadorSum(string clavePaciente)
-        {
-            var altas = db.Altas.Include(a => a.Ingresos).Include(a => a.Pacientes).Include(a => a.Habitaciones);
-            
-                var prueba = altas.Sum(s => s.Monto);
-                
-                
-            
-
-            return Json(prueba);
-        }
+        
     }
 }

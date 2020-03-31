@@ -87,3 +87,4 @@ C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\obj\Debug\Pro
 C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\obj\Debug\ProyectoBFinal.dll
 C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\obj\Debug\ProyectoBFinal.pdb
 C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\obj\Debug\ProyectoBFinal.csprojAssemblyReference.cache
+C:\Users\Rafael Espinal\source\repos\ProyectoBFinal\ProyectoBFinal\bin\Rotativa.dll

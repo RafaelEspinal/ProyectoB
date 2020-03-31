@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 <h2>Lista de altas medicas</h2>
+
 @using (Html.BeginForm())
 {
 <div class="row container-fluid">
@@ -28,8 +29,8 @@
 
 </div>
 }
-<p>
-
+<p class="col-lg-7 col-lg-offset-4" >
+    @Html.ActionLink("Imprimir", "Imprimir",null,null, new { @class="btn btn-warming" })
 </p>
 
 
