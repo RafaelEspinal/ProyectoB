@@ -15,9 +15,42 @@ namespace ProyectoBFinal.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: Ingresos
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            Tipo Doble;
+            Tipo Privada;
+            Tipo Suite;
+            Doble = (Tipo)Enum.Parse(typeof(Tipo), "0");
+            Privada = (Tipo)Enum.Parse(typeof(Tipo), "1");
+            Suite = (Tipo)Enum.Parse(typeof(Tipo), "2");
+
             var ingresos = db.Ingresos.Include(i => i.Habitacion).Include(i => i.Paciente);
+
+            ingresos = from s in ingresos
+                    select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if (searchString.Contains("Doble"))
+                {
+                    ingresos = ingresos.Where(s => s.Fecha_ingreso.Contains(searchString) 
+                                                || s.Habitacion.Tipo == Doble);
+                }
+                else if (searchString.Contains("Privada"))
+                {
+                    ingresos = ingresos.Where(s => s.Fecha_ingreso.Contains(searchString)
+                                                || s.Habitacion.Tipo == Privada);
+                }
+                else if (searchString.Contains("Suite"))
+                {
+                    ingresos = ingresos.Where(s => s.Fecha_ingreso.Contains(searchString)
+                                               || s.Habitacion.Tipo == Suite);
+                }
+                else
+                {
+                    ingresos = ingresos.Where(s => s.Fecha_ingreso.Contains(searchString));
+                }
+
+            }
             return View(ingresos.ToList());
         }
 
@@ -39,7 +72,7 @@ namespace ProyectoBFinal.Controllers
         // GET: Ingresos/Create
         public ActionResult Create()
         {
-            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Numero");
+            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Tipo");
             ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre");
             return View();
         }
@@ -58,7 +91,7 @@ namespace ProyectoBFinal.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Numero", ingresos.Id_Habitacion);
+            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Tipo", ingresos.Id_Habitacion);
             ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre", ingresos.Id_Paciente);
             return View(ingresos);
         }
@@ -75,7 +108,7 @@ namespace ProyectoBFinal.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Numero", ingresos.Id_Habitacion);
+            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Tipo", ingresos.Id_Habitacion);
             ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre", ingresos.Id_Paciente);
             return View(ingresos);
         }
@@ -93,7 +126,7 @@ namespace ProyectoBFinal.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Numero", ingresos.Id_Habitacion);
+            ViewBag.Id_Habitacion = new SelectList(db.Habitaciones, "Id", "Tipo", ingresos.Id_Habitacion);
             ViewBag.Id_Paciente = new SelectList(db.Pacientes, "Id", "Nombre", ingresos.Id_Paciente);
             return View(ingresos);
         }
