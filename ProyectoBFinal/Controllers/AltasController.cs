@@ -26,8 +26,14 @@ namespace ProyectoBFinal.Controllers
                 altas = altas.Where(s => s.Pacientes.Nombre.Contains(searchString)
                                         || s.Fecha_ingreso.Contains(searchString)
                                         || s.Fecha_salida.Contains(searchString));
+                
 
             }
+            ViewBag.Sumatoria = altas.Sum(s => s.Monto);
+            ViewBag.Conteo = altas.Count();
+            ViewBag.Promedio = altas.Average(s => s.Monto);
+            ViewBag.Max = altas.Max(s => s.Monto);
+            ViewBag.Min = altas.Min(s => s.Monto);
             return View(altas.ToList());
         }
 
@@ -177,6 +183,17 @@ namespace ProyectoBFinal.Controllers
                              where i.Id == clavePaciente
                              select h.Numero).ToList();
             return Json(duplicado);
+        }
+        public JsonResult BuscadorSum(string clavePaciente)
+        {
+            var altas = db.Altas.Include(a => a.Ingresos).Include(a => a.Pacientes).Include(a => a.Habitaciones);
+            
+                var prueba = altas.Sum(s => s.Monto);
+                
+                
+            
+
+            return Json(prueba);
         }
     }
 }
