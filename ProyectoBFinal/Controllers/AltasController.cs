@@ -22,16 +22,24 @@ namespace ProyectoBFinal.Controllers
             altas = from s in altas
                     select s;
             
+
             if (!String.IsNullOrEmpty(searchString))
             {
 
                 altas = altas.Where(s => s.Pacientes.Nombre.Contains(searchString)
                                         || s.Fecha_ingreso.Contains(searchString)
                                         || s.Fecha_salida.Contains(searchString));
-
             }
-
+            else
+            {
+                ViewBag.Sumatoria = altas.Sum(s => s.Monto);
+                ViewBag.Conteo = altas.Count();
+                ViewBag.Promedio = altas.Average(s => s.Monto);
+                ViewBag.Max = altas.Max(s => s.Monto);
+                ViewBag.Min = altas.Min(s => s.Monto);
+            }
             
+
             return View(altas.ToList());
         }
 
