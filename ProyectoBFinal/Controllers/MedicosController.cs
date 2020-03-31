@@ -15,9 +15,19 @@ namespace ProyectoBFinal.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: Medicos
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Medicos.ToList());
+           
+            var medicos = from s in db.Medicos
+                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                
+                medicos = medicos.Where(s => s.Nombre.Contains(searchString)
+                                            || s.Especialidad.Contains(searchString));
+                
+            }
+            return View(medicos.ToList());
         }
 
         // GET: Medicos/Details/5

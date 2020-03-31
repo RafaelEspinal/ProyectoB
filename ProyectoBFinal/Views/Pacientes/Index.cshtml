@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Index";
 }
-<link href="~/Estilos/PacienteIndex.css" rel="stylesheet" />
 
 <h2>Lista de pacientes</h2>
 @using (Html.BeginForm())
@@ -49,19 +48,10 @@
                 @Html.DisplayFor(modelItem => item.Asegurado)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) |
-                @using (Html.BeginForm("Delete", "Pacientes", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.ActionLink("Eliminar", "Delete", "", new { id = item.Id }, new { @class = "btn btn-danger" })
-
-                }
-
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class ="btn btn-default" }) |
+                @Html.ActionLink("Eliminar", "Delete" ,new { id = item.Id }, new { @class ="btn btn-danger"})
             </td>
         </tr>
-
     }
 
 </table>
-
-
