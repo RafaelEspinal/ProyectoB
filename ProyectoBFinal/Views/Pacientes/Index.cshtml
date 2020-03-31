@@ -49,11 +49,19 @@
                 @Html.DisplayFor(modelItem => item.Asegurado)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) |
+                @using (Html.BeginForm("Delete", "Pacientes", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ActionLink("Eliminar", "Delete", "", new { id = item.Id }, new { @class = "btn btn-danger" })
+
+                }
+
             </td>
         </tr>
+
     }
 
 </table>
+
+
