@@ -15,9 +15,33 @@ namespace ProyectoBFinal.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: Habitaciones
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Habitaciones.ToList());
+            Tipo Doble;
+            Tipo Privada;
+            Tipo Suite;
+            Doble = (Tipo)Enum.Parse(typeof(Tipo), "0");
+            Privada = (Tipo)Enum.Parse(typeof(Tipo), "1");
+            Suite = (Tipo)Enum.Parse(typeof(Tipo), "2");
+            var habitaciones = from s in db.Habitaciones
+                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if (searchString.Contains("Doble"))
+                {
+                    habitaciones = habitaciones.Where(s => s.Tipo == Doble);
+                }
+                else if (searchString.Contains("Privada"))
+                {
+                    habitaciones = habitaciones.Where(s => s.Tipo == Privada);
+                }
+                else if (searchString.Contains("Suite"))
+                {
+                    habitaciones = habitaciones.Where(s => s.Tipo == Suite);
+                }
+                
+            }
+            return View(habitaciones.ToList());
         }
 
         // GET: Habitaciones/Details/5

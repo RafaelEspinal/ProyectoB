@@ -15,9 +15,21 @@ namespace ProyectoBFinal.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: Citas
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var citas = db.Citas.Include(c => c.Medico).Include(c => c.Paciente);
+           
+             citas = from s in citas
+                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                
+                citas = citas.Where(s => s.Paciente.Nombre.Contains(searchString)
+                                        || s.Medico.Nombre.Contains(searchString)
+                                        || s.Fecha.Contains(searchString));
+               
+            }
+
             return View(citas.ToList());
         }
 
