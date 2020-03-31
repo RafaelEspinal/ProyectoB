@@ -15,9 +15,19 @@ namespace ProyectoBFinal.Controllers
         private HospitalContext db = new HospitalContext();
 
         // GET: Altas
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var altas = db.Altas.Include(a => a.Ingresos).Include(a => a.Pacientes).Include(a => a.Habitaciones);
+            altas = from s in altas
+                    select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+
+                altas = altas.Where(s => s.Pacientes.Nombre.Contains(searchString)
+                                        || s.Fecha_ingreso.Contains(searchString)
+                                        || s.Fecha_salida.Contains(searchString));
+
+            }
             return View(altas.ToList());
         }
 
