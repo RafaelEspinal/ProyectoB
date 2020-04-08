@@ -21,7 +21,7 @@
 </p>
 <br />
 
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Cedula)
@@ -48,8 +48,8 @@
                 @Html.DisplayFor(modelItem => item.Asegurado)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class ="btn btn-default" }) |
-                @Html.ActionLink("Eliminar", "Delete" ,new { id = item.Id }, new { @class ="btn btn-danger"})
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }
