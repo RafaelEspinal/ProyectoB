@@ -158,6 +158,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\html2pdf.bundle.min.js" />
     <Content Include="Estilos\PacienteIndex.css" />
     <Content Include="Estilos\SideBar.css" />
     <Content Include="favicon.ico" />

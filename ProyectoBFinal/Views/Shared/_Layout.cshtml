@@ -5,11 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <script src="~/Content/html2pdf.bundle.min.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    
+
     <nav class="navbar navbar-inverse sidebar" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -63,14 +64,26 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                
+
                 </div>
             </div>
         </div>
         @RenderBody()
         <hr />
     </div>
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("tabla");
+            var opt = {
+                filename: 'HabitacionesReportes.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
 
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
